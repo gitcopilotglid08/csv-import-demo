@@ -1,14 +1,14 @@
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using CsvImportDemo.Models;
 using CsvImportDemo.Repositories;
 using CsvImportDemo.Services;
 using CsvImportDemo.Validators;
 using Moq;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
-using System.Linq;
 
 namespace CsvImportDemo.Tests
 {
@@ -40,9 +40,9 @@ namespace CsvImportDemo.Tests
             var repoMock = new Mock<IProductRepository>();
             var validatorMock = new Mock<IProductValidator>();
             var service = new ProductService(repoMock.Object, validatorMock.Object);
-            var products = new List<Product> 
-            { 
-                new Product { Name = "Test", Price = 10, Quantity = 5 } 
+            var products = new List<Product>
+            {
+                new Product { Name = "Test", Price = 10, Quantity = 5 }
             };
 
             // Act
@@ -59,9 +59,9 @@ namespace CsvImportDemo.Tests
             var repoMock = new Mock<IProductRepository>();
             var validatorMock = new Mock<IProductValidator>();
             var service = new ProductService(repoMock.Object, validatorMock.Object);
-            var expectedProducts = new List<Product> 
-            { 
-                new Product { Id = 1, Name = "Test", Price = 10, Quantity = 5 } 
+            var expectedProducts = new List<Product>
+            {
+                new Product { Id = 1, Name = "Test", Price = 10, Quantity = 5 }
             };
             repoMock.Setup(r => r.GetAllProductsAsync()).ReturnsAsync(expectedProducts);
 

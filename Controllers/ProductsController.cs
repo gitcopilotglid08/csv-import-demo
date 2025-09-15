@@ -1,11 +1,11 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using CsvImportDemo.Models;
 using CsvImportDemo.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Linq;
-using System;
 
 namespace CsvImportDemo.Controllers
 {
@@ -33,13 +33,13 @@ namespace CsvImportDemo.Controllers
                 using (var stream = file.OpenReadStream())
                 {
                     var (validProducts, errors) = await _service.ValidateAndParseCsvAsync(stream);
-                    
+
                     if (errors != null && errors.Any())
                         return BadRequest(new { message = "Validation errors found", errors });
-                    
+
                     if (!validProducts.Any())
                         return BadRequest(new { message = "No valid products found in the CSV file." });
-                    
+
                     await _service.SaveProductsAsync(validProducts);
                     return Ok(new { message = "Products imported successfully.", count = validProducts.Count() });
                 }

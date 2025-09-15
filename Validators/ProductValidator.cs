@@ -1,5 +1,5 @@
-using CsvImportDemo.Models;
 using System.Text.RegularExpressions;
+using CsvImportDemo.Models;
 
 namespace CsvImportDemo.Validators
 {

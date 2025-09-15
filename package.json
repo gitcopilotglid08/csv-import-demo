@@ -1,0 +1,30 @@
+{
+  "name": "csvimportdemo",
+  "version": "1.0.0",
+  "description": "A full-stack ASP.NET Core Web API with React client for uploading, validating, and importing CSV data using Clean Architecture principles.",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "husky",
+    "format": "prettier --write . && dotnet format",
+    "format:dotnet": "dotnet format",
+    "format:prettier": "prettier --write .",
+    "lint:react": "cd react-client && npm run lint",
+    "install:all": "npm install && cd react-client && npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitcopilotglid08@github.com/gitcopilotglid08/csv-import-demo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gitcopilotglid08/csv-import-demo/issues"
+  },
+  "homepage": "https://github.com/gitcopilotglid08/csv-import-demo#readme",
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.6",
+    "prettier": "^3.6.2"
+  }
+}
