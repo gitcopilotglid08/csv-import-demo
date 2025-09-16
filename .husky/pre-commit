@@ -1,0 +1,24 @@
+echo "🔍 Running pre-commit checks..."
+
+# Format .NET code
+echo "📝 Formatting .NET code..."
+dotnet format CsvImportDemo.sln --no-restore --verbosity quiet
+
+# Check if there are any staged React files
+if git diff --cached --name-only | grep -E "react-client/.*\.(js|jsx|ts|tsx|css|scss|json)$" > /dev/null; then
+    echo "📝 Formatting React code..."
+    cd react-client
+    npx prettier --write --ignore-unknown $(git diff --cached --name-only --relative=react-client | grep -E "\.(js|jsx|ts|tsx|css|scss|json)$" | tr '\n' ' ')
+    npx eslint --fix $(git diff --cached --name-only --relative=react-client | grep -E "\.(js|jsx)$" | tr '\n' ' ') 2>/dev/null || true
+    cd ..
+fi
+
+# Format other files with Prettier (root level)
+echo "📝 Formatting other files..."
+npx prettier --write --ignore-unknown $(git diff --cached --name-only | grep -E "\.(json|md|yml|yaml)$" | tr '\n' ' ') 2>/dev/null || true
+
+# Re-add formatted files
+echo "➕ Re-adding formatted files..."
+git add -A
+
+echo "✅ Pre-commit checks completed!"

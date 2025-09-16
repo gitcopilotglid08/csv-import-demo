@@ -1,5 +1,5 @@
-using CsvImportDemo.Models;
 using System.Collections.Generic;
+using CsvImportDemo.Models;
 
 namespace CsvImportDemo.Validators
 {

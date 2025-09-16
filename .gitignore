@@ -53,6 +53,7 @@ artifacts/
 .env.production.local
 
 # React / Node.js
+node_modules/
 react-client/node_modules/
 react-client/npm-debug.log*
 react-client/yarn-debug.log*
